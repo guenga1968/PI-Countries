@@ -7,11 +7,17 @@ const router = Router();
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
-router.post('/', function (req, res) {
-    const {name} = req.body;
-    res.send('activity' + name);
+router.post('/', async function (req, res) {
+    const {name, dificulty, duration, season, description } = req.body;
+    const tourism = {
+        name,
+        dificulty,
+        duration,
+        season,
+        description,
+    }
+    const tourismDb = await Tourism.create(tourism);
+    return res.json({msg: 'Actividad turística creada correctamente'});
 });
-
-
 
 module.exports = router;

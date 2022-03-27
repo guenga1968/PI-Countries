@@ -38,5 +38,9 @@ module.exports = (sequelize) => {
                 isIn: [['Verano', 'Otoño', 'Invierno', 'Primavera']],
             },
         },
+        description: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
     });
 };
