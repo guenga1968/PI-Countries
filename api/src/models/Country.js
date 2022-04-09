@@ -23,22 +23,37 @@ module.exports = (sequelize) => {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
+      get() {
+        const valor=this.getDataValue('name');
+        if(valor === "Falkland Islands"){
+          return "Falkland Islands (Islas Malvinas)";
+        }
+        return valor;
+      },
     },
     flag: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    continent: {
-      type: DataTypes.STRING,
+    continents: {
+      type: DataTypes.ARRAY(DataTypes.STRING),
       allowNull: false,
     },
     capital: {
-      type: DataTypes.STRING,
+      type: DataTypes.ARRAY(DataTypes.STRING),
       allowNull: true,
+      get() {
+        const valor = this.getDataValue('capital');
+        return valor ? valor : ["Sin capital"];
+    },
     },
     subregion: {
       type: DataTypes.STRING,
       allowNull: true,
+      get() {
+        const valor = this.getDataValue('subregion');
+        return valor ? valor : this.continents;
+    },
     },
     area: {
       type: DataTypes.REAL,
@@ -47,6 +62,10 @@ module.exports = (sequelize) => {
     population: {
       type: DataTypes.INTEGER,
       allowNull: true,
+      get() {
+        const valor = this.getDataValue('population');
+        return valor === 0 ? "Sin Datos" : valor;
+      },
     },
   });
  
