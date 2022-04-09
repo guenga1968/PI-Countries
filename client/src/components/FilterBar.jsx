@@ -2,12 +2,9 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { filtrarContinente, ordenar, filtrarActividad } from "../store/actions";
 import { Link } from "react-router-dom";
-import axios from "axios";
-import s from "./css/menu.module.css";
+import s from "./css/filter.module.css";
 
 var continente = [];
-
-var nuevasActividades = new Set();
 export default function FilterBar() {
   const paises = useSelector((state) => state.paises);
   const [paisAct, setPaisAct] = React.useState(paises);
@@ -44,7 +41,7 @@ export default function FilterBar() {
 
   return (
     <React.Fragment>
-      <div className={s.menu}>
+      <div className={s.barra}>
         <select name="contFilter" id="contFilter" >
           <option value="">Select a continent</option>
           <option value="ALL" onClick={selectCont}>
@@ -81,7 +78,7 @@ export default function FilterBar() {
         </select>
         <Link to="/home/form">
           {" "}
-          <button >Ir a Cargar Actividad</button>
+          <button >Cargar Actividad</button>
         </Link>
       </div>
     </React.Fragment>

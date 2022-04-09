@@ -1,0 +1,89 @@
+.detalle{
+    position: relative;
+    top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+    max-width: 300px;
+    margin:0 auto;
+    padding: 1em;
+    background-color: rgba(190, 186, 186, 0.5);
+}
+.detalle img {
+    width: 200px;
+    height: 150;
+    object-fit: cover;
+    align-self: center;
+    margin-bottom: 5px;
+}
+.detalle h4, h3 {
+    font-size: 1.2em;
+    font-weight: bold;
+    color:rgb(72, 72, 72);
+    align-self: center;
+  
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.detalle ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+    color:green;
+
+}
+.detalle ul li {
+    align-self: center;
+    font-weight: bold;
+    color:blue;
+}
+.detalle h2 {
+    font-size: 1.6em;
+    text-align: center;
+    font-weight: bold;
+    align-self: center;
+    color:rgb(72, 72, 72);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.detalle label {
+    font-size: 1.2em;
+    font-weight: bold;
+    align-self: left;
+  
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color:brown;
+}
+.regreso {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0.5rem;
+    background-color: rgba(190, 186, 186, 0.5);
+    box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.2);
+    z-index: 10;
+    width: 100%;
+}
+.regreso button {
+    margin :0 10px;
+    padding: 10px;
+    background-color: rgb(12, 52, 133);
+    color:white;
+    border:none;
+    border-radius: 5px;
+    width: 100%;
+    
+    font-size: 1.2em ;
+    cursor: pointer;
+}
+.regreso button:hover {
+    background-color: rgb(87, 136, 235);
+    color:white;
+}   

@@ -1,54 +1,149 @@
-
-.btn{
-	border-radius: 3px;
-	display: inline-block;
-	padding: 20px 15px;
-	text-decoration: none;
-	text-shadow: 0 1px 0 rgba(255,255,255,0.3);
-	box-shadow: 0 1px 1px rgba(0,0,0,0.3); 
-}
-
-.btn-green{
-	color: white;
-	background-color: #3CC93F;
-}
-.btn-green:hover{
-	background-color: #37B839;	
-}
-.btn-green:active{
-	background-color: #29962A;
-}
-
-form{
+.formulario{
     position: relative;
-    background-color: white;
-    border-radius: 3px;
-    color: #999;
-    font-size: 0.8em;
-    padding: 20px;
-    margin: 0 auto;
-    width: 300px;
-    z-index: 20;
+    top: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+    max-width: 30%;
+    margin:0 auto;
+    padding: 1em;
+    background-color: rgba(190, 186, 186, 0.5);
+    flex-wrap: nowrap;
 }
-
-input, textarea{
-    border: 0;
-    outline: none;
-
-    width: 280px;
-}
-
-.field{
-    border: solid 1px #ccc;
-    padding: 10px;
-
-    
-}
-
-.field:focus{
-    border-color: #18A383;
-}
-
-.center-content{
+.formulario h1 {
+    font-size: 1.6em;
     text-align: center;
+    font-weight: bold;
+    align-self: center;
+    color:rgb(72, 72, 72);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-bottom: 10px;
+}
+ .input { 
+     width: 80%;
+    font-size: 1.2em;
+    font-weight: bold;
+    align-self: center;
+    padding: .5em;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color:rgb(79, 78, 78);
+    background-color: whitesmoke;
+    border: none;
+    border-radius: 5px;
+} 
+
+.temporada {
+    font-size: 1.2em;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    padding: .5em;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color:rgb(79, 78, 78);
+    border-radius: 5px;
+}
+.dificultad {
+    font-size: 1.2em;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    padding: .5em;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color:rgb(79, 78, 78);
+    border-radius: 5px;
+}
+.dificultad label {
+    font-size: 1.2em;
+    font-weight: bold;
+    align-self: center;
+    padding: .5em;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color:rgb(79, 78, 78);
+    border-radius: 5px;
+}
+.select {
+    width:60%;
+    font-size: 1.2em;
+    font-weight: bold;
+    align-self: center;
+    padding: .5em;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color:rgb(79, 78, 78);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.cargar {
+    position: relative;
+    margin-top: 10px;
+    font-size: 1.1em;
+    width: 100%;
+    font-weight: bold;
+    align-self: center;
+    padding: .5em;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color:whitesmoke;
+    background-color: rgb(72, 72, 72);
+    border:none;
+    cursor: pointer;
+}
+.cargar:hover {
+    background-color: rgb(12, 52, 133);
+}
+.regreso {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0.5rem;
+    background-color: rgba(190, 186, 186, 0.5);
+    box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.2);
+    z-index: 10;
+    width: 100%;
+}
+.regreso button {
+    margin :0 10px;
+    padding: 10px;
+    background-color: rgb(12, 52, 133);
+    color:white;
+    border:none;
+    border-radius: 5px;
+    width: 100%;
+    
+    font-size: 1.2em ;
+    cursor: pointer;
+}
+.regreso button:hover {
+    background-color: rgb(87, 136, 235);
+    color:white;
+}   
+.error {
+    color: red;
+    font-size: 1em;
+    font-weight: bold;
+    align-self: center;
+    text-align: center;
+    padding: .5em;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  
+}
+
+.boton {
+    position: relative;
+    margin: 10px 5px;
+    font-size: 1em;
+    padding: 0.3em;
+    align-self: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color:whitesmoke;
+    background-color: rgb(4, 116, 163);
+    border:none;
+    cursor: pointer;
 }

@@ -5,11 +5,10 @@ import s from "./css/menu.module.css";
 
 export default function Menu(){
     return(
-        <div class={s.menu} >
+        <div className={s.menu} >
+             <div><FilterBar /></div>   
             <div><SearchBar /></div>
-         <div><FilterBar /></div>    
-                
-        
+         
         </div>
     )
 }

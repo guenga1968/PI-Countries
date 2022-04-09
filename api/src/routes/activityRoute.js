@@ -31,8 +31,7 @@ router.post('/', async function (req, res,next) {
     cargada.countriesActivity.map(async (pais) => {
         let paisActividad = await Country.findByPk(pais);
         paisActividad.addTourism(cargada.id);
-    })
-    
+    });
        res.json(cargada);
     } catch (err) {
         next(err);

@@ -1,0 +1,41 @@
+.paginado {
+    position:absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    
+    background-color: rgba(190, 186, 186, 0.5);
+    box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.2);
+    z-index: 10;
+    width: 100%;
+}
+.paginado button {
+    margin :0;
+    padding: 10px;
+    background-color: rgb(12, 52, 133);
+    color:white;
+    border:none;
+margin: 0 10px;
+    width: 100%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    cursor: pointer;
+}
+.paginado button:hover {
+    background-color: rgb(87, 136, 235);
+    color:white;
+}
+.paginado span {
+    margin: 0 10px;
+    padding: 10px;
+    font-size: 1.6em;
+   text-align: center;
+    border:none;
+   
+    width: 100%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    cursor: pointer;
+}

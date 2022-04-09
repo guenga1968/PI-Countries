@@ -60,7 +60,7 @@ export function cargarActividad(objeto) {
         .then(respuesta => {
         dispatch({
             type: 'CARGAR_ACTIVIDAD',
-            payload: respuesta.data.activity,
+            payload: respuesta.data,
         })
     })
 }
@@ -76,5 +76,10 @@ export function filtrarActividad(value){
     
 }
 }
-
-
+export function borrarEstado(){
+    return function(dispatch) {
+        dispatch({
+            type: 'BORRAR_ESTADO',
+        })
+}
+}

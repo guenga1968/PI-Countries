@@ -70,7 +70,7 @@
      height: 150px;
      padding: 10px;
      margin: 10px;
-     border: 1px solid rgb(160, 145, 145);
+     border: 1px solid rgb(137, 135, 135);
      border-radius: 10px;
      display: flex;
      flex-direction: column;
@@ -84,8 +84,8 @@
     top:0;
     width: 100%;
     height: 100%;
-    background-color: rgba(86, 189, 241, 0.735);
-    border: 1px solid rgb(160, 145, 145);
+    background-color: rgba(203, 204, 205, 0.735);
+    border: 1px solid rgb(0, 33, 244);
      border-radius: 10px;
     z-index: -10;
 }

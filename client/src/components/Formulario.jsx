@@ -1,17 +1,23 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { cargarActividad } from "../store/actions";
+import { cargarActividad,borrarEstado } from "../store/actions";
 import s from "./css/formulario.module.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
 export default function Formulario() {
+const actRedux = useSelector((state) => state.mensaje);
+
 
   const [paises, setPaises] = useState([]);
   const dispatch = useDispatch();
-  React.useEffect(async () => {
-    let data = await axios.get("http://localhost:3001/api/countries");
-    setPaises(data.data);
+
+  React.useEffect( () => {
+    dispatch(borrarEstado());
+   axios.get("http://localhost:3001/api/countries")
+      .then(res => {
+    setPaises(res.data);
+      })  
   }, []);
 
   paises.sort((a, b) => a.name.localeCompare(b.name));
@@ -74,16 +80,18 @@ export default function Formulario() {
       error.nombre !== "" ||
       error.dificultad !== ""
     ) {
-      setTimeout(() => {
+      
         setError({
           todos:
             "Todos los campos son obligatorios y no deben contener errores",
         });
-      }, 2000);
+
     } else {
+      
       setError({ todos: "" });
-      actividad.dificultad = parseInt(actividad.dificultad);
-      actividad.duracion = parseInt(actividad.duracion);
+      setActividad({...actividad, dificultad:  parseInt(actividad.dificultad)}) 
+      setActividad({...actividad, duracion: parseInt(actividad.duracion)});
+      console.log(actividad);
       dispatch(cargarActividad(actividad));
     }
   }
@@ -100,27 +108,26 @@ export default function Formulario() {
   return (
     <>
     <div className="pruebaFondo">
-      <form  onSubmit={handleSubmit} >
+      <form className={s.formulario} onSubmit={handleSubmit} >
         <h1 >Carga de actividades turísticas</h1>
-        {error.todos && <span className="error">{error.todos}</span>}
+        {error.todos && <span className={s.error}>{error.todos}</span>}
       
-        <input className={s.field} name="nombre"  type="text" value={actividad.nombre}
+        <input className={s.input} name="nombre"  type="text" value={actividad.nombre}
           placeholder="Nombre de la Actividad" onChange={handleChange}/>
         
-        {error.nombre && <span>{error.nombre}</span>}
-        <div className={s.field}>
+        {error.nombre && <span className={s.error}>{error.nombre}</span>}
+        <div className={s.dificultad}>
           <label htmlFor="dificultad">Dificultad: {actividad.dificultad}</label>
           <input name="dificultad"  type="range" min="1"
             max="5" value={actividad.dificultad} step="1" onChange={handleChange} />
         </div>
         
-         
-          <input className={s.field} name="duracion" type="number" value={actividad.duracion} onChange={handleChange} 
+          <input className={s.input} name="duracion" type="text" value={actividad.duracion} onChange={handleChange} 
           placeholder ="Duración de la Actividad"/>
       
-        {error.duracion && <span className="error">{error.duracion}</span>}
-        <div className={s.field}>
-          Temporada:
+        {error.duracion && <span className={s.error}>{error.duracion}</span>}
+        <div className={s.temporada}>
+          <label htmlFor="">Temporada</label>
           <label htmlFor="">
             <input type="radio" name="temporada" value="Verano" onClick={handleChange}/>{" "}
             Verano
@@ -138,31 +145,29 @@ export default function Formulario() {
             Primavera
           </label>
         </div>
-        <div >
-          <select className={s.field} name="paises" id="paises" size={10} >
-            <option value="">Seleccione un país</option>
+        
+          <select className={s.select} name="paises" id="paises"  >
+            <option value="">Seleccione un País</option>
             {paises.map((pais) => (
               <option key={pais.id} value={pais.id} onClick={handleChange}>
                 {pais.name}
               </option>
             ))}
           </select>
-        </div>
+        
         <div>
           {lista.map((data) => (
-            <span key={data}> {data}
-              <button name={data} onClick={borrarPais}>X</button>
-            </span>
+              <button  className={s.boton} key={data} name={data} onClick={borrarPais}>{data}{" X "}</button>
           ))}
         </div>
-
-        <div className="enviar">
-          <input className={s.btn} type="submit" name={"boton"} value="Cargar Actividad" />
-        </div>
+          <input className={s.cargar} type="submit" name={"boton"} value="Cargar Actividad" />
       </form>
       <div>
+        {actRedux && <span className={s.error}>Cargado Correctamente</span>}
+      </div>
+      <div className={s.regreso}>
         <Link to="/home" style={{ textDecoration: "none" }}>
-          <button className={s.btn}>Volver</button>
+          <button >Volver</button>
         </Link>
       </div>
     </div>

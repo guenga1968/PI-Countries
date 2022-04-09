@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import React from "react";
 import Pais from "./Pais.jsx";
 import Menu from "./Menu.jsx";
-import "./css/paginado.css"
+import s from "./css/paginado.module.css"
 
 
 
@@ -68,10 +68,10 @@ if(paises.length === 0){
 
   return (
     <>
-    <div className ="pruebaFondo"style ={{backgroundColor:"#f5f5f5"}}>
+    <div className ="pruebaFondo">
       <Menu />
       
-      <div className="paises">
+      <div className="paises" style={{marginTop:"5em"}}>
     {paginado.map((pais) => (
     <Pais
       key={pais.id}
@@ -83,10 +83,10 @@ if(paises.length === 0){
     />
   ))}
       </div>
-      <div className="paginado">
-        <button onClick={() => paginaAnterior()} className="botonPaginado">Anterior</button>
-        <span>{"  " + paginaActual + "  " }</span>
-        <button onClick={paginaSiguiente} className="botonPaginado">Siguiente</button>
+      <div className={s.paginado}>
+        <button onClick={() => paginaAnterior()}>Anterior</button>
+        <span>{"Pagina Actual - " + paginaActual + " -"}</span>
+        <button onClick={paginaSiguiente} >Siguiente</button>
       </div>
       </div>
     </>
