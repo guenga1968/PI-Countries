@@ -1,6 +1,6 @@
 const initialState = {
   paises: [],
-  mensaje: false,
+  mensaje:"",
 
 };
 
@@ -44,11 +44,11 @@ export default function reducer(state = initialState, action) {
       return { ...state, paises: orderCountry};
 
     case "CARGAR_ACTIVIDAD":
-      return { ...state, mensaje: true };
+      return { ...state, mensaje: action.payload};
       case "FILTRAR_ACTIVIDAD":
       return { ...state, paises: action.payload};
     case "BORRAR_ESTADO":
-      return { ...state, mensaje: false };
+      return { ...state, mensaje: "" };
     default:
       return state;
   }

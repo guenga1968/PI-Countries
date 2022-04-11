@@ -147,3 +147,16 @@
     border:none;
     cursor: pointer;
 }
+.cargado {
+    
+   
+    font-size: 1.5em;
+    padding: 0.3em;
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color:whitesmoke;
+    background-color: rgb(12, 163, 4);
+    border:none;
+   border-radius: 3px;
+
+}

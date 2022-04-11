@@ -1,28 +1,13 @@
 import React from 'react';
-import axios from 'axios';
-import { useDispatch} from 'react-redux';
+import { useSelector} from 'react-redux';
 import {useParams, Link} from 'react-router-dom';
-import { listarTodos } from '../store/actions';
 import s from './css/detalle.module.css';
 
-
-
 export default function Pais(props) {
-    const dispatch = useDispatch();
-    const id = useParams().id;
-    const [pais, setPais] = React.useState({});
-    
-    React.useEffect( async() => {
-       let datos = await axios.get('http://localhost:3001/api/countries/' + id)
-       datos.data.area = datos.data.area.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-       datos.data.population = datos.data.population.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-       if(datos.data.tourisms.length===0) datos.data.tourisms = [{
-        id: 0,   
-        activity:"No tourism activities"}];
-       setPais(datos.data);
-    },[])
-    
-
+   
+    const {id} = useParams();
+   const paises = useSelector((state) => state.paises);
+    const pais = paises.find((pais) => pais.id === id);
 
     return (
         <React.Fragment>
@@ -44,7 +29,7 @@ export default function Pais(props) {
          </div>
          <div className={s.regreso}>
                 <Link to="/home">
-             <button  onClick={dispatch(listarTodos())}>Return</button>
+             <button  >Return</button>
                 </Link>
          </div>
     </div>

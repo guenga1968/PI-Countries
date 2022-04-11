@@ -1,27 +1,16 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { cargarActividad,borrarEstado } from "../store/actions";
+import { cargarActividad,borrarEstado, listarTodos } from "../store/actions";
 import s from "./css/formulario.module.css";
-import axios from "axios";
 import { Link } from "react-router-dom";
 
 export default function Formulario() {
-const actRedux = useSelector((state) => state.mensaje);
-
-
-  const [paises, setPaises] = useState([]);
   const dispatch = useDispatch();
+  const actRedux = useSelector((state) => state.mensaje);
+  const paises = useSelector((state) => state.paises.sort((a, b) => a.name.localeCompare(b.name)));
 
-  React.useEffect( () => {
-    dispatch(borrarEstado());
-   axios.get("http://localhost:3001/api/countries")
-      .then(res => {
-    setPaises(res.data);
-      })  
-  }, []);
 
-  paises.sort((a, b) => a.name.localeCompare(b.name));
-
+  const [error, setError] = useState({nombre: "",duracion: "",todos:""});
   const [actividad, setActividad] = useState({
     nombre: "",
     dificultad: 1,
@@ -30,89 +19,80 @@ const actRedux = useSelector((state) => state.mensaje);
     paises: [],
   });
   const [lista, setLista] = useState([]);
+  React.useEffect( () => {
+    dispatch(borrarEstado());
+     dispatch(listarTodos());
+  }, []);
 
-  const [error, setError] = useState({
-    nombre: "",
-    dificultad: "",
-    duracion: "",
-    temporada: "",
-    paises: [],
-    todos: "",
-  });
-  // patron = !/^[A-Za-z\s]+$/g.test(value)patron = !/^[0-9]+$/g.test(value);
   function handleChange(e) {
-    let { name, value } = e.target;
+
+    let { name, value} = e.target;
     if (name === "nombre") {
       value = value.toUpperCase();
+      !/^[A-Za-z\u00f1\u00d1\s]+$/g.test(value) || value.length <3 ?
+        setError({ ...error, nombre:"Solo se permiten letras, mínimo tres caracteres" }):
+        setError({ ...error, nombre: "" });
     }
-    let patron, mensaje;
-    name === "nombre"
-      ? (patron = !/^[A-Za-z\u00f1\u00d1\s]+$/g.test(value))
-      : (patron = !/^[0-9]+$/g.test(value));
-    name === "nombre"
-      ? (mensaje = "Solo se permiten letras")
-      : (mensaje = "Solo se permiten numeros");
-    if (name === "nombre" || name === "duracion") {
-      if (patron) {
-        setError({ ...error, [name]: mensaje });
-      } else {
-        setError({ ...error, [name]: "" });
-      }
+     if(name === "duracion") {
+      !/^[0-9]+$/g.test(value) || value >100 ?
+        setError({ ...error, duracion:"Solo se permiten numeros hasta 100" }):
+        setError({ ...error, duracion: "" });   
     }
-    if (e.target.selected) {
-      if (!actividad.paises.includes(value)) {
+     if (e.target.selected) {
+      if (!lista.includes(e.target.text)) {
         setLista([...lista, e.target.text]);
-        setActividad({ ...actividad, paises: [...actividad.paises, value] });
+        setActividad({ ...actividad, paises: [...actividad.paises,value] });
+        e.target.selected = false;
       }
-    } else {
-      setActividad({ ...actividad, [name]: value });
     }
+    setActividad({ ...actividad, [name]: value });
+   if(error.todos !== ""){
+    setError({...error,todos:""})
+   }
   }
-
+  
   function handleSubmit(e) {
     e.preventDefault();
+  
     if (
       actividad.nombre === "" ||
       actividad.dificultad === "" ||
       actividad.duracion === "" ||
       actividad.temporada === "" ||
       actividad.paises.length === 0 ||
-      error.nombre !== "" ||
-      error.dificultad !== ""
+      error.nombre != "" ||
+      error.duracion !=""
     ) {
-      
-        setError({
-          todos:
-            "Todos los campos son obligatorios y no deben contener errores",
-        });
+   return setError({...error,todos:"Todos los campos son obligatorios"});
 
     } else {
-      
-      setError({ todos: "" });
+      setError({ nombre: "", duracion: "",todos: ""});
       setActividad({...actividad, dificultad:  parseInt(actividad.dificultad)}) 
       setActividad({...actividad, duracion: parseInt(actividad.duracion)});
-      console.log(actividad);
       dispatch(cargarActividad(actividad));
-    }
+      //-------------------------------------BORRAR --------------------------------------------
+      setActividad({nombre: "",dificultad: 1,duracion: "",temporada: "",paises: []});
+      setLista([]); 
+      document.querySelector("#formulario").reset();
+    } 
   }
 
   function borrarPais(e) {
-    let encontrado = paises.find((item) => item.name === e.target.name);
-    setActividad({
-      ...actividad,
-      paises: actividad.paises.filter((item) => item !== encontrado.id),
-    });
-    setLista(lista.filter((item) => item !== e.target.name));
+     setLista(lista.filter((pais) => pais !== e.target.value));
+      let result = paises.find((pais) => pais.name === e.target.value);
+      setActividad({ ...actividad, paises: actividad.paises.filter((pais) => pais !== result.id) });
+    console.log(e.target.value, lista , actividad)
   }
 
   return (
     <>
     <div className="pruebaFondo">
-      <form className={s.formulario} onSubmit={handleSubmit} >
-        <h1 >Carga de actividades turísticas</h1>
-        {error.todos && <span className={s.error}>{error.todos}</span>}
+      <form className={s.formulario} onSubmit={handleSubmit} id="formulario">
+
+        <h1 >Cargar Actividad</h1>
+        {error.todos !=="" && <span className={s.error}>{error.todos}</span>}
       
-        <input className={s.input} name="nombre"  type="text" value={actividad.nombre}
+        <input className={s.input}  type="text" name="nombre"  value={actividad.nombre}
           placeholder="Nombre de la Actividad" onChange={handleChange}/>
         
         {error.nombre && <span className={s.error}>{error.nombre}</span>}
@@ -145,8 +125,8 @@ const actRedux = useSelector((state) => state.mensaje);
             Primavera
           </label>
         </div>
-        
-          <select className={s.select} name="paises" id="paises"  >
+      
+          <select className={s.select} name="select" id="paises"  >
             <option value="">Seleccione un País</option>
             {paises.map((pais) => (
               <option key={pais.id} value={pais.id} onClick={handleChange}>
@@ -154,21 +134,18 @@ const actRedux = useSelector((state) => state.mensaje);
               </option>
             ))}
           </select>
-        
+         
         <div>
           {lista.map((data) => (
-              <button  className={s.boton} key={data} name={data} onClick={borrarPais}>{data}{" X "}</button>
+            <button  className={s.boton} key={data} value={data}  onClick={borrarPais}>{data} </button>
           ))}
         </div>
           <input className={s.cargar} type="submit" name={"boton"} value="Cargar Actividad" />
       </form>
-      <div>
-        {actRedux && <span className={s.error}>Cargado Correctamente</span>}
-      </div>
+      
       <div className={s.regreso}>
-        <Link to="/home" style={{ textDecoration: "none" }}>
-          <button >Volver</button>
-        </Link>
+      {actRedux && <span className={s.cargado}>{actRedux}</span>}
+        <Link to="/home" > <button  >Volver</button></Link>
       </div>
     </div>
     </>

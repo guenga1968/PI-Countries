@@ -1,7 +1,6 @@
 * {
     margin: 0;
     padding: 0;
-   
 }
 .imagenFondo {
     background-image: url(mapa2.jpg);	
@@ -26,8 +25,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-   
+    align-items: center; 
 }
 .box:before{
     content: '';
@@ -70,7 +68,7 @@
      height: 150px;
      padding: 10px;
      margin: 10px;
-     border: 1px solid rgb(137, 135, 135);
+     border: 2px solid rgb(61, 58, 58);
      border-radius: 10px;
      display: flex;
      flex-direction: column;
@@ -84,32 +82,32 @@
     top:0;
     width: 100%;
     height: 100%;
-    background-color: rgba(203, 204, 205, 0.735);
-    border: 1px solid rgb(0, 33, 244);
+    background-color: rgba(98, 135, 145, 0.687);
+    border: 2px solid rgb(120, 120, 120);
      border-radius: 10px;
     z-index: -10;
 }
  .tarjeta h3 {
      position: absolute;
      bottom: 10px;
+     color:rgb(54, 94, 5);
+     
  }
 .tarjeta:hover {
-    box-shadow: 0 0 2px 3px rgba(0, 140, 186, 0.5);
+    box-shadow: 0 0 2px 3px rgba(173, 174, 174, 0.5);
 }
 .titulo {
     font-size:cal(0.8em + 1.5vw);
     line-height: 18px;
     font-weight: bold;
-    color: #002d70;
+    color:whitesmoke;
     text-align: center;
 }
 .titulo:hover {
     color:rgb(0, 140, 186);
     cursor: pointer;
 }
-.subtitulo {
-    color:brown;
-}
+
 .bandera{
     width: 100px;
     height: 50px;
@@ -120,20 +118,7 @@
     box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.2);
 }
 
-.detalle {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 10;
-    display: none;
-}
+
 
 .pruebaFondo{
     position:relative;
@@ -143,9 +128,6 @@
     background-position: center;
     background-repeat: no-repeat;
     background-color: rgba(0, 0, 0, 0.5);
-    
-   
- 
 }
 .pruebaFondo:before{
     content: '';

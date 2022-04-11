@@ -1,5 +1,6 @@
-import { useSelector } from "react-redux";
+
 import React from "react";
+import { useSelector } from "react-redux";
 import Pais from "./Pais.jsx";
 import Menu from "./Menu.jsx";
 import s from "./css/paginado.module.css"
@@ -40,18 +41,13 @@ React.useEffect(()=>{
   
 },[paises,paginaActual])
 
-
-
 function paginaAnterior() {
-  
 setPaginaActual(paginaActual-1)
-
 }
+
 function paginaSiguiente() {
-  
   if(paginaActual<Math.ceil(paises.length/10)){
   setPaginaActual(paginaActual+1)
-  
  }
 }
 
@@ -67,10 +63,10 @@ if(paises.length === 0){
 } else {
 
   return (
-    <>
+  
     <div className ="pruebaFondo">
       <Menu />
-      
+    
       <div className="paises" style={{marginTop:"5em"}}>
     {paginado.map((pais) => (
     <Pais
@@ -80,16 +76,20 @@ if(paises.length === 0){
       flag={pais.flag}
       continents={pais.continents}
       population={pais.population}
+      area={pais.area}
+      capital={pais.capital}
+      subregion={pais.subregion}
+      tourisms={pais.tourisms}
     />
   ))}
       </div>
       <div className={s.paginado}>
-        <button onClick={() => paginaAnterior()}>Anterior</button>
+        <button onClick={paginaAnterior}>Anterior</button>
         <span>{"Pagina Actual - " + paginaActual + " -"}</span>
         <button onClick={paginaSiguiente} >Siguiente</button>
       </div>
       </div>
-    </>
+
   );
     }
 }

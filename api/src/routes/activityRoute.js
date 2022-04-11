@@ -32,9 +32,9 @@ router.post('/', async function (req, res,next) {
         let paisActividad = await Country.findByPk(pais);
         paisActividad.addTourism(cargada.id);
     });
-       res.json(cargada);
+       res.send('Actividad cargada correctamente');
     } catch (err) {
-        next(err);
+        res.send('Error al cargar actividad');
     }
 });
 router.get('/:actividad', async function (req, res, next) {
