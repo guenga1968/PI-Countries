@@ -15,22 +15,10 @@ export default function reducer(state = initialState, action) {
     case "FILTRAR_CONTINENTE":
       return { ...state, paises: action.payload};
 
-    case "ORDENAR":
+    case "ORDENAR_NOMBRE":
+      let val = action.payload;
       let orderCountry = [...state.paises];
-      let tipo = action.payload.tipo;
-      let val = action.payload.valor;
-      if(tipo === "population"){
       orderCountry =  orderCountry.sort((a,b) => {
-          if(a.population < b.population) {
-            return val === "ASC" ? -1 : 1;
-          } 
-          if(a.population > b.population) {
-            return val === "ASC" ? 1 : -1;
-          }
-          return 0;
-        });
-      }else{
-       orderCountry= orderCountry.sort((a,b) => {
           if(a.name < b.name) {
             return val === "ASC" ? -1 : 1;
           } 
@@ -38,10 +26,22 @@ export default function reducer(state = initialState, action) {
             return val === "ASC" ? 1 : -1;
           }
           return 0;
-        
         });
-      }
       return { ...state, paises: orderCountry};
+     
+      case "ORDENAR_POBLACION":
+      let val2 = action.payload;
+      let orderCountry2 = [...state.paises];
+      orderCountry2 =  orderCountry2.sort((a,b) => {
+          if(a.population < b.population) {
+            return val2 === "ASC" ? -1 : 1;
+          }
+          if(a.population > b.population) {
+            return val2 === "ASC" ? 1 : -1;
+          }
+          return 0;
+        });
+      return { ...state, paises: orderCountry2};
 
     case "CARGAR_ACTIVIDAD":
       return { ...state, mensaje: action.payload};

@@ -8,9 +8,9 @@ import "./css/Inicio.css";
 export default function Inicio() {
   const paises = useSelector((state) => state.paises);
   const dispatch = useDispatch();
-  React.useEffect(() => {
+  
     dispatch(listarTodos());
-  }, []);
+  
   return (
     <>
     <div className="imagenFondo">

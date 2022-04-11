@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { filtrarContinente, ordenar, filtrarActividad } from "../store/actions";
+import { filtrarContinente, ordenarNombre, ordenarPoblacion, filtrarActividad } from "../store/actions";
 import { Link } from "react-router-dom";
 import s from "./css/filter.module.css";
 
@@ -28,15 +28,20 @@ export default function FilterBar() {
   function selectCont(e) {
     dispatch(filtrarContinente(e.target.value));
   }
-  function orden(e) {
-    dispatch(ordenar(e.target.name, e.target.value));
+  function ordenP(e) {
+    dispatch(ordenarPoblacion(e.target.value));
+   e.target.value = "";
+  }
+  function ordenN(e) {
+    dispatch(ordenarNombre(e.target.value));
     e.target.value = "";
   }
+  
   function porActividad(e) {
     let prueba
     prueba = paises.filter(p => p.tourisms.map(a => a.activity).includes(e.target.value));
     dispatch(filtrarActividad(prueba));
-    e.target.value = "";
+     e.target.value = "";
   }
 
   return (
@@ -66,19 +71,19 @@ export default function FilterBar() {
           })}
         </select>
 
-        <select name="name" id="order" onChange={orden} >
+        <select name="name" id="order" onChange={ordenN} >
           <option value="">Order by Name</option>
           <option value="ASC">Ascending</option>
           <option value="DESC">Descending</option>
         </select>
-        <select name="population" id="order2" onChange={orden} >
+        <select name="population" id="order2" onChange={ordenP} >
           <option value="">Order by Poupulation</option>
           <option value="ASC">Ascending</option>
           <option value="DESC">Descending</option>
         </select>
         <Link to="/home/form">
           {" "}
-          <button >Cargar Actividad</button>
+          <button >Charge Activity</button>
         </Link>
       </div>
     </React.Fragment>

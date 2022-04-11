@@ -10,7 +10,8 @@ export default function Pais({id,name, flag, continents}) {
         <Link to= {`/home/${id}`} className="link" >
           <h2 className="titulo">{name}</h2>
         </Link>
-            <h3 >{continents}</h3> 
+            <h3  >{continents}</h3> 
+          
          </div>
     )
 }

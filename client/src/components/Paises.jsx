@@ -41,6 +41,8 @@ React.useEffect(()=>{
   
 },[paises,paginaActual])
 
+let total = Math.ceil(paises.length / 10);
+
 function paginaAnterior() {
 setPaginaActual(paginaActual-1)
 }
@@ -84,9 +86,9 @@ if(paises.length === 0){
   ))}
       </div>
       <div className={s.paginado}>
-        <button onClick={paginaAnterior}>Anterior</button>
-        <span>{"Pagina Actual - " + paginaActual + " -"}</span>
-        <button onClick={paginaSiguiente} >Siguiente</button>
+        <button onClick={paginaAnterior}>Previous</button>
+        <span>{paginaActual + " - " + total }</span>
+        <button onClick={paginaSiguiente} >Next</button>
       </div>
       </div>
 

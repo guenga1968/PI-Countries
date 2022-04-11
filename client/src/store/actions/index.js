@@ -45,12 +45,21 @@ export function filtrarContinente(continent) {
         })
     }
 }
-export function ordenar(tipo,valor){
+export function ordenarNombre(tipo) {
 
     return function(dispatch) {
         dispatch({
-            type: 'ORDENAR',
-            payload: {tipo,valor},
+            type: 'ORDENAR_NOMBRE',
+            payload: tipo,
+    })  
+}
+}
+export function ordenarPoblacion(orden) {
+
+    return function(dispatch) {
+        dispatch({
+            type: 'ORDENAR_POBLACION',
+            payload: orden,
     })  
 }
 }

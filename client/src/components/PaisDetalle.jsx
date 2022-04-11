@@ -5,8 +5,10 @@ import s from './css/detalle.module.css';
 
 export default function Pais(props) {
     const {id} = useParams();
-   const paises = useSelector((state) => state.paises);
+    const paises = useSelector((state) => state.paises);
     const pais = paises.find((pais) => pais.id === id);
+
+
 
     return (
       
@@ -21,9 +23,9 @@ export default function Pais(props) {
          <label htmlFor="">Area:</label>   <h4> {pais.area.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")} Km2</h4>
          <label htmlFor="">Population:</label>    <h4 > {pais.population.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</h4>
              <ul  >Tourism Activity:
-                 {pais.tourisms && pais.tourisms.map((activ) => {
+                 { pais.tourisms.length > 0 ? pais.tourisms.map((activ) => {
                      return ( <li  key ={activ.id}>{activ.activity}</li>)
-                 })}
+                 }) : <li>No hay actividades turisticas</li>}
              </ul>
          </div>
          <div className={s.regreso}>
