@@ -6,10 +6,12 @@ import { Link } from "react-router-dom";
 
 export default function Formulario() {
   const dispatch = useDispatch();
+  React.useEffect( () => {
+    dispatch(borrarEstado());
+     dispatch(listarTodos());
+  }, []);
   const actRedux = useSelector((state) => state.mensaje);
   const paises = useSelector((state) => state.paises.sort((a, b) => a.name.localeCompare(b.name)));
-
-
   const [error, setError] = useState({nombre: "",duracion: "",todos:""});
   const [actividad, setActividad] = useState({
     nombre: "",
@@ -19,10 +21,7 @@ export default function Formulario() {
     paises: [],
   });
   const [lista, setLista] = useState([]);
-  React.useEffect( () => {
-    dispatch(borrarEstado());
-     dispatch(listarTodos());
-  }, []);
+  
 
   function handleChange(e) {
 
@@ -39,11 +38,12 @@ export default function Formulario() {
         setError({ ...error, duracion: "" });   
     }
      if (e.target.selected) {
+       
       if (!lista.includes(e.target.text)) {
+        console.log(lista);
         setLista([...lista, e.target.text]);
-        setActividad({ ...actividad, paises: [...actividad.paises,value] });
-        e.target.selected = false;
-      }
+       return setActividad({ ...actividad, paises: [...actividad.paises,value] });
+      }   
     }
     setActividad({ ...actividad, [name]: value });
    if(error.todos !== ""){
@@ -63,7 +63,9 @@ export default function Formulario() {
       error.nombre != "" ||
       error.duracion !=""
     ) {
-   return setError({...error,todos:"Todos los campos son obligatorios"});
+      console.log("no se carga "+ actividad.paises.length);
+   setError({...error, todos:"Todos los campos son obligatorios"});
+  
 
     } else {
       setError({ nombre: "", duracion: "",todos: ""});
@@ -75,6 +77,7 @@ export default function Formulario() {
       setLista([]); 
       document.querySelector("#formulario").reset();
     } 
+    return
   }
 
   function borrarPais(e) {
