@@ -1,5 +1,6 @@
 const initialState = {
   paises: [],
+  pais: {},
   mensaje:"",
 
 };
@@ -8,6 +9,9 @@ export default function reducer(state = initialState, action) {
   switch (action.type) {
     case "SHOW_PAISES":
       return { ...state, paises: action.payload };
+
+    case "MOSTRAR_PAIS":
+      return { ...state, pais: action.payload };
 
     case "SEARCH_PAISES":
       return { ...state, paises: action.payload };
@@ -19,29 +23,27 @@ export default function reducer(state = initialState, action) {
       let val = action.payload;
       let orderCountry = [...state.paises];
       orderCountry =  orderCountry.sort((a,b) => {
-          if(a.name < b.name) {
-            return val === "ASC" ? -1 : 1;
-          } 
-          if(a.name > b.name) {
-            return val === "ASC" ? 1 : -1;
-          }
-          return 0;
-        });
+        if(val === "ASC"){
+          return a.name.localeCompare(b.name);
+        }else{
+          return b.name.localeCompare(a.name);
+        }
+      });
       return { ...state, paises: orderCountry};
      
-      case "ORDENAR_POBLACION":
-      let val2 = action.payload;
+       case "ORDENAR_POBLACION":
+       let val2 = action.payload;
       let orderCountry2 = [...state.paises];
-      orderCountry2 =  orderCountry2.sort((a,b) => {
-          if(a.population < b.population) {
-            return val2 === "ASC" ? -1 : 1;
-          }
-          if(a.population > b.population) {
-            return val2 === "ASC" ? 1 : -1;
-          }
-          return 0;
+      if(val2 === "ASC"){
+        orderCountry2 =  orderCountry2.sort((a,b) => {
+          return a.population - b.population;
         });
-      return { ...state, paises: orderCountry2};
+      }else{
+        orderCountry2 =  orderCountry2.sort((a,b) => {
+          return b.population - a.population;
+        });
+      }
+       return { ...state, paises: orderCountry2};
 
     case "CARGAR_ACTIVIDAD":
       return { ...state, mensaje: action.payload};

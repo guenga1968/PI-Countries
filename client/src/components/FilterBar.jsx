@@ -37,7 +37,7 @@ export default function FilterBar() {
     e.target.value = "";
   }
   
-  function porActividad(e) {
+ function porActividad(e) {
     let prueba
     prueba = paises.filter(p => p.tourisms.map(a => a.activity).includes(e.target.value));
     dispatch(filtrarActividad(prueba));

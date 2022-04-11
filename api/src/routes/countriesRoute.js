@@ -58,7 +58,8 @@ router.get("/:idPais", async function (req, res, next) {
     include: [
       {model: Tourism},],
         });
-    return res.json(pais);
+  return res.json(pais);
+   
   } catch (error) {
     next(error)
   }

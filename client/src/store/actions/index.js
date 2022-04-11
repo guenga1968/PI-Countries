@@ -14,11 +14,27 @@ export function listarTodos(){
         })
     }
 }
+export function detallePais(id){
+    return function(dispatch) {
+        axios.get('http://localhost:3001/api/countries/'+id)
+        .then(pais=> {
+            dispatch({
+                type: 'MOSTRAR_PAIS',
+                payload: pais.data
+            })
+        }
+        )
+        .catch(error => {
+            console.log(error); // hacer cartel que hubo error en carga de paises
+        })
+    }
+}
+
 export function buscarPais(search){
     return function(dispatch) {
         axios.get('http://localhost:3001/api/countries?name=' + search)
         .then(paises => {
-            dispatch({
+          dispatch({
                 type: 'SEARCH_PAISES',
                 payload: paises.data
             })
@@ -45,12 +61,12 @@ export function filtrarContinente(continent) {
         })
     }
 }
-export function ordenarNombre(tipo) {
+export function ordenarNombre(orden) {
 
     return function(dispatch) {
         dispatch({
             type: 'ORDENAR_NOMBRE',
-            payload: tipo,
+            payload: orden,
     })  
 }
 }
