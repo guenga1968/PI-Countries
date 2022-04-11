@@ -58,7 +58,7 @@ if(paises.length === 0){
     <div className="pruebaFondo" >
     <Menu />
     <div className="paises">
-      <h1>Upss Not Found</h1>
+      <h1>Upps Not Found</h1>
     </div>
     </div>
   )

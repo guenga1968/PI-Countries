@@ -60,7 +60,7 @@ module.exports = (sequelize) => {
       allowNull: true,
     },
     population: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.BIGINT,
       allowNull: true,
       get() {
         const valor = this.getDataValue('population');
