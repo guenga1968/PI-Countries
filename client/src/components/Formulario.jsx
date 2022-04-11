@@ -81,7 +81,6 @@ export default function Formulario() {
      setLista(lista.filter((pais) => pais !== e.target.value));
       let result = paises.find((pais) => pais.name === e.target.value);
       setActividad({ ...actividad, paises: actividad.paises.filter((pais) => pais !== result.id) });
-    console.log(e.target.value, lista , actividad)
   }
 
   return (
