@@ -1,7 +1,8 @@
 import React from 'react';
-import{ detallePais,listarTodos, limpiarPais} from '../store/actions/index';
+import{ detallePais, limpiarPais} from '../store/actions/index';
 import { useSelector, useDispatch} from 'react-redux';
 import {useParams, Link} from 'react-router-dom';
+import Mapa from './Mapa';
 import s from './css/detalle.module.css';
 
 export default function Pais(props) {
@@ -17,7 +18,7 @@ React.useEffect(() => {
 
 function limpiar(){
     dispatch(limpiarPais());
-    dispatch(listarTodos());
+   
 }
 
 if (pais.name === undefined) {
@@ -50,6 +51,9 @@ if (pais.name === undefined) {
                 
              </ul>
          </div> 
+         <div>
+             <Mapa nombre={pais.name}/>
+         </div>
          <div className={s.regreso}>
                 <Link to="/home">
              <button onClick={limpiar} >Return</button>
