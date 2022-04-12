@@ -10,7 +10,6 @@ import s from "./css/paginado.module.css"
 export default function Paises() {
   let inicio, fin;
   let paises = useSelector((state) => state.paises);
-
   const [paginado, setPaginado]= React.useState([...paises]);
   const[paginaActual, setPaginaActual] =React.useState(1)
   React.useEffect(() => {

@@ -12,6 +12,7 @@ export default function SearchBar() {
   function envioForm(e) {
     e.preventDefault();
     dispatch(buscarPais(search));
+    setSearch("");
   }
 
   function onInputChange(e) {

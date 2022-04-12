@@ -51,42 +51,42 @@ router.get('/:actividad', async function (req, res, next) {
     }
 });
 
-router.put('/', function (req, res, next) {
-    const {id, name, dificulty, duration, season, countriesActivity } = req.body;
-    const tourism = {
-        id,
-        name,
-        dificulty,
-        duration,
-        season,
-        countriesActivity,
-    }
-    return Tourism.update(tourism, {
-        where: {
-            id,
-        },
-    }).then(() => {
-        return res.json({
-            message: 'Actividad turística actualizada correctamente',
-        });
-    }).catch(err => {
-        return next(err);
-    }) 
-});
+// router.put('/', function (req, res, next) {
+//     const {id, name, dificulty, duration, season, countriesActivity } = req.body;
+//     const tourism = {
+//         id,
+//         name,
+//         dificulty,
+//         duration,
+//         season,
+//         countriesActivity,
+//     }
+//     return Tourism.update(tourism, {
+//         where: {
+//             id,
+//         },
+//     }).then(() => {
+//         return res.json({
+//             message: 'Actividad turística actualizada correctamente',
+//         });
+//     }).catch(err => {
+//         return next(err);
+//     }) 
+// });
 
-router.delete('/:id', function (req, res, next) {
-    const {id} = req.params;
-    return Tourism.destroy({
-        where: {
-            id,
-        },
-    }).then(() => {
-        return res.json({
-            message: 'Actividad turística eliminada correctamente',
-        });
-    }).catch(err => {
-        return next(err);
-    })
-});
+// router.delete('/:id', function (req, res, next) {
+//     const {id} = req.params;
+//     return Tourism.destroy({
+//         where: {
+//             id,
+//         },
+//     }).then(() => {
+//         return res.json({
+//             message: 'Actividad turística eliminada correctamente',
+//         });
+//     }).catch(err => {
+//         return next(err);
+//     })
+// });
 
 module.exports = router;

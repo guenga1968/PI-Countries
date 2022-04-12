@@ -2,7 +2,6 @@ const initialState = {
   paises: [],
   pais: {},
   mensaje:"",
-
 };
 
 export default function reducer(state = initialState, action) {

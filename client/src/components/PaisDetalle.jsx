@@ -1,5 +1,5 @@
 import React from 'react';
-import{ detallePais} from '../store/actions/index';
+import{ detallePais,listarTodos} from '../store/actions/index';
 import { useSelector, useDispatch} from 'react-redux';
 import {useParams, Link} from 'react-router-dom';
 import s from './css/detalle.module.css';
@@ -47,7 +47,7 @@ if (pais.name === undefined) {
          </div> 
          <div className={s.regreso}>
                 <Link to="/home">
-             <button  >Return</button>
+             <button onClick={dispatch(listarTodos())} >Return</button>
                 </Link>
          </div>
     </div>
