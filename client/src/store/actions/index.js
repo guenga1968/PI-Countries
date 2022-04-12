@@ -108,3 +108,10 @@ export function borrarEstado(){
         })
 }
 }
+export function limpiarPais(){
+    return function(dispatch) {
+        dispatch({
+            type: 'LIMPIAR_PAIS',
+        })
+}
+}

@@ -1,5 +1,5 @@
 import React from 'react';
-import{ detallePais,listarTodos} from '../store/actions/index';
+import{ detallePais,listarTodos, limpiarPais} from '../store/actions/index';
 import { useSelector, useDispatch} from 'react-redux';
 import {useParams, Link} from 'react-router-dom';
 import s from './css/detalle.module.css';
@@ -14,7 +14,10 @@ React.useEffect(() => {
     dispatch(detallePais(id));
 }, [])
 
-
+function limpiar(){
+    dispatch(limpiarPais());
+    dispatch(listarTodos());
+}
 
 if (pais.name === undefined) {
     return (
@@ -48,7 +51,7 @@ if (pais.name === undefined) {
          </div> 
          <div className={s.regreso}>
                 <Link to="/home">
-             <button onClick={dispatch(listarTodos())} >Return</button>
+             <button onClick={limpiar} >Return</button>
                 </Link>
          </div>
     </div>

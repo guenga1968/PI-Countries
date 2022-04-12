@@ -46,10 +46,16 @@ export default function reducer(state = initialState, action) {
 
     case "CARGAR_ACTIVIDAD":
       return { ...state, mensaje: action.payload};
+
       case "FILTRAR_ACTIVIDAD":
       return { ...state, paises: action.payload};
+
     case "BORRAR_ESTADO":
       return { ...state, mensaje: "" };
+
+      case 'LIMPIAR_PAIS':
+      return { ...state, pais: {} };
+
     default:
       return state;
   }

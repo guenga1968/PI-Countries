@@ -7,7 +7,7 @@ import s from "./css/filter.module.css";
 var continente = [];
 export default function FilterBar() {
   const paises = useSelector((state) => state.paises);
-  const [paisAct, setPaisAct] = React.useState(paises);
+ 
   const [act, setAct] = React.useState([]);
   const dispatch = useDispatch();
 
