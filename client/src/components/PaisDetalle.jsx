@@ -8,10 +8,11 @@ export default function Pais(props) {
     const {id} = useParams();
     const dispatch = useDispatch();
    
-    let pais = useSelector(state => state.pais)
+    const pais = useSelector(state => state.pais)
     
 React.useEffect(() => {
     dispatch(detallePais(id));
+    
 }, [])
 
 function limpiar(){

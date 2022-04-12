@@ -11,13 +11,11 @@ export default function FilterBar() {
   const [act, setAct] = React.useState([]);
   const dispatch = useDispatch();
 
-  var pruebaAct=[...paises];
-
-  React.useEffect(async () => {
-    pruebaAct = paises.filter(pais => pais.tourisms.length > 0).map(pais => pais.tourisms.map(a => a.activity));
-    pruebaAct = [...new Set(pruebaAct.flat())];
+  var pruebaAct=React.useRef([...paises]);
+  pruebaAct = paises.filter(pais => pais.tourisms.length > 0).map(pais => pais.tourisms.map(a => a.activity));
+  pruebaAct = [...new Set(pruebaAct.flat())];
+  React.useEffect( () => {
     setAct(pruebaAct);
-    
   }, [paises]);
 
   if (continente.length === 0) {
