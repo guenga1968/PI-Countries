@@ -40,9 +40,10 @@ if (pais.name === undefined) {
          <label htmlFor="">Population:</label>    
      <h4 > {population.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</h4> 
              <ul  >Tourism Activity:
-                 { pais.tourisms.length > 0 ? pais.tourisms.forEach(element => {
-                     return ( <li  key ={element}>{element}</li>)
-                 }): <li>No hay actividades turisticas</li>}
+                 { pais.tourisms.length > 0 ? pais.tourisms.map(tourism => (
+                        <li key={tourism.id}>{tourism.activity}</li>
+                 )): <li>No tourism activity</li>}
+                
              </ul>
          </div> 
          <div className={s.regreso}>
