@@ -91,45 +91,45 @@ export default function Formulario() {
     <div className="pruebaFondo">
       <form className={s.formulario} onSubmit={handleSubmit} id="formulario">
 
-        <h1 >Cargar Actividad</h1>
+        <h1 >Load an Activity</h1>
         {error.todos !=="" && <span className={s.error}>{error.todos}</span>}
       
         <input className={s.input}  type="text" name="nombre"  value={actividad.nombre}
-          placeholder="Nombre de la Actividad" onChange={handleChange}/>
+          placeholder="Activity Name" onChange={handleChange}/>
         
         {error.nombre && <span className={s.error}>{error.nombre}</span>}
         <div className={s.dificultad}>
-          <label htmlFor="dificultad">Dificultad: {actividad.dificultad}</label>
+          <label htmlFor="dificultad">Difficulty: {actividad.dificultad}</label>
           <input name="dificultad"  type="range" min="1"
             max="5" value={actividad.dificultad} step="1" onChange={handleChange} />
         </div>
         
           <input className={s.input} name="duracion" type="text" value={actividad.duracion} onChange={handleChange} 
-          placeholder ="Duración de la Actividad"/>
+          placeholder ="Duration (days)"/>
       
         {error.duracion && <span className={s.error}>{error.duracion}</span>}
         <div className={s.temporada}>
-          <label htmlFor="">Temporada</label>
+          <label htmlFor="">Season</label>
           <label htmlFor="">
             <input type="radio" name="temporada" value="Verano" onClick={handleChange}/>{" "}
-            Verano
+            Summer
           </label>
           <label htmlFor="">
             <input type="radio" name="temporada" value="Otoño" onClick={handleChange}/>{" "}
-            Otoño
+            Autumn
           </label>
           <label htmlFor="">
             <input type="radio" name="temporada" value="Invierno" onClick={handleChange}/>{" "}
-            Invierno
+            Winter
           </label>
           <label htmlFor="">
             <input type="radio" name="temporada" value="Primavera" onClick={handleChange}/>{" "}
-            Primavera
+            Spring
           </label>
         </div>
       
           <select className={s.select} name="select" id="paises"  >
-            <option value="">Seleccione un País</option>
+            <option value="">Choose a Country</option>
             {paises.map((pais) => (
               <option key={pais.id} value={pais.id} onClick={handleChange}>
                 {pais.name}
@@ -142,12 +142,12 @@ export default function Formulario() {
             <button  className={s.boton} key={data} value={data}  onClick={borrarPais}>{data} </button>
           ))}
         </div>
-          <input className={s.cargar} type="submit" name={"boton"} value="Cargar Actividad" />
+          <input className={s.cargar} type="submit" name={"boton"} value="Load Activity" />
       </form>
       
       <div className={s.regreso}>
       {actRedux && <span className={s.cargado}>{actRedux}</span>}
-        <Link to="/home" > <button  >Volver</button></Link>
+        <Link to="/home" > <button  >Retrun</button></Link>
       </div>
     </div>
     </>

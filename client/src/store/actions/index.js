@@ -115,3 +115,11 @@ export function limpiarPais(){
         })
 }
 }
+
+export function paisesporArea(){
+    return function(dispatch) {
+        dispatch({
+            type: 'PAISES_POR_AREA',
+        })
+    }
+}

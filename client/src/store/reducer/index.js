@@ -56,6 +56,13 @@ export default function reducer(state = initialState, action) {
       case 'LIMPIAR_PAIS':
       return { ...state, pais: {} };
 
+      case "PAISES_POR_AREA":
+        let val3 = [...state.paises];
+        val3 = val3.filter(pais => {
+          return pais.area < 10000;
+        });
+        return { ...state, paises: val3};
+
     default:
       return state;
   }

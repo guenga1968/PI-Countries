@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { filtrarContinente, ordenarNombre, ordenarPoblacion, filtrarActividad } from "../store/actions";
+import { filtrarContinente, ordenarNombre, ordenarPoblacion, filtrarActividad , paisesporArea} from "../store/actions";
 import { Link } from "react-router-dom";
 import s from "./css/filter.module.css";
 
@@ -41,6 +41,9 @@ export default function FilterBar() {
     dispatch(filtrarActividad(prueba));
      e.target.value = "";
   }
+  function paisesChicos() {
+    dispatch (paisesporArea())
+  }
 
   return (
     <React.Fragment>
@@ -68,7 +71,7 @@ export default function FilterBar() {
             );
           })}
         </select>
-
+          <button  onClick={paisesChicos}>Chicos</button>
         <select name="name" id="order" onChange={ordenN} >
           <option value="">Order by Name</option>
           <option value="ASC">Ascending</option>

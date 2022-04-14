@@ -1,6 +1,6 @@
 .detalle{
-    position: relative;
-    top: 20px;
+     position: relative;
+    top: 20px; 
     display: flex;
     flex-direction: column;
     justify-content: left;
@@ -32,13 +32,13 @@
     font-size: 1.2em;
     font-weight: bold;
     text-align: center;
-    color:green;
+    color:rgb(53, 97, 66);
 
 }
 .detalle ul li {
     align-self: center;
     font-weight: bold;
-    color:blue;
+    color:rgb(25, 54, 87);
 }
 .detalle h2 {
     font-size: 1.6em;
@@ -54,7 +54,7 @@
     align-self: left;
   
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    color:brown;
+    color:rgb(165, 114, 42);
 }
 .regreso {
     position: absolute;
@@ -74,7 +74,7 @@
 .regreso button {
     margin :0 10px;
     padding: 10px;
-    background-color: rgb(12, 52, 133);
+    background-color: rgb(66, 68, 72);
     color:white;
     border:none;
     border-radius: 5px;
@@ -84,6 +84,6 @@
     cursor: pointer;
 }
 .regreso button:hover {
-    background-color: rgb(87, 136, 235);
+    background-color: rgb(63, 80, 116);
     color:white;
-}   
+}  

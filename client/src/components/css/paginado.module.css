@@ -8,13 +8,13 @@
     justify-content: space-around;
     align-items: center;
     
-    background-color: rgba(190, 186, 186, 0.5);
+    background-color: rgba(252, 198, 99, 0.3);
     box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.2);
     z-index: 10;
     width: 100%;
 }
 .paginado button {
-    background-color: rgba(12, 52, 133, 0.5);
+    background-color: rgba(26, 61, 130, 0.5);
     color:white;
     border:none;
     font-size: 1.4em;
@@ -25,7 +25,7 @@ padding: 5px;
     cursor: pointer;
 }
 .paginado button:hover {
-    background-color: rgb(87, 136, 235);
+    background-color: rgb(72, 101, 157);
     color:white;
 }
 .paginado span {

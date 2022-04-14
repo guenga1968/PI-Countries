@@ -19,7 +19,7 @@
 .barra button {
     margin :0 10px;
     padding: 10px;
-    background-color: rgb(12, 52, 133);
+    background-color: rgb(48, 69, 112);
     color:whitesmoke;
     border:none;
     border-radius: 5px;
@@ -27,6 +27,6 @@
     cursor: pointer;
 }
 .barra button:hover {
-    background-color: rgb(95, 155, 205);
+    background-color: rgb(68, 104, 133);
     color:white;
 }
