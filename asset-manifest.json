@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/PI-Countries/client/static/css/main.81f5fc93.css",
+    "main.js": "/PI-Countries/client/static/js/main.c0f1bea5.js",
+    "static/js/377.3e5a2daf.chunk.js": "/PI-Countries/client/static/js/377.3e5a2daf.chunk.js",
+    "static/media/mapa5.jpg": "/PI-Countries/client/static/media/mapa5.6dfddcd4866775760878.jpg",
+    "index.html": "/PI-Countries/client/index.html",
+    "main.81f5fc93.css.map": "/PI-Countries/client/static/css/main.81f5fc93.css.map",
+    "main.c0f1bea5.js.map": "/PI-Countries/client/static/js/main.c0f1bea5.js.map",
+    "377.3e5a2daf.chunk.js.map": "/PI-Countries/client/static/js/377.3e5a2daf.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.81f5fc93.css",
+    "static/js/main.c0f1bea5.js"
+  ]
+}
