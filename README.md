@@ -27,6 +27,10 @@ La idea general del mismo, era construir una aplicación en la cual se pudiera v
   Minutos antes de la presentación, se agregó un iframe que muestra la ubicación en el mapa del país seleccionado.
 
   Durante la presentación del proyecto, los correctores solicitaron  agregar en vivo, un boton que permitiera filtrar los paises por superficies menores a una determianda cantidad.(boton chicos en area de filtrado)
+  
+  # Quick Start
+  npm install
+  npm start
 
   # Agradecimientos
 
